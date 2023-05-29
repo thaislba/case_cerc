@@ -28,6 +28,9 @@ input("Aperte Enter para continuar...")
 # TAREFA 1
 # TODO: Imprima as primeiras 20 linhas usando um loop para identificar os dados.
 print("\n\nTAREFA 1: Imprimindo as primeiras 20 amostras")
+for i in range(21):
+    if data_list[i] is not data_list[0]:
+        print(data_list[i])
 
 # Vamos mudar o data_list para remover o cabeçalho dele.
 data_list = data_list[1:]
@@ -38,9 +41,9 @@ data_list = data_list[1:]
 input("Aperte Enter para continuar...")
 # TAREFA 2
 # TODO: Imprima o `gênero` das primeiras 20 linhas
-
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
-
+for i in range(20):
+    print(data_list[i][6])
 
 # Ótimo! Nós podemos pegar as linhas(samples) iterando com um for, e as colunas(features) por índices.
 # Mas ainda é difícil pegar uma coluna em uma lista. Exemplo: Lista com todos os gêneros
@@ -51,6 +54,8 @@ input("Aperte Enter para continuar...")
 def column_to_list(data, index):
     column_list = []
     # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
+    for line in data:
+        column_list.append(line[index])
     return column_list
 
 
@@ -70,7 +75,11 @@ input("Aperte Enter para continuar...")
 # TODO: Conte cada gênero. Você não deveria usar uma função para isso.
 male = 0
 female = 0
-
+for line in data_list:
+    if (line[-2]) == "Female":
+        female += 1
+    elif (line[-2]) == "Male":
+        male += 1
 
 # Verificando o resultado
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
@@ -87,6 +96,11 @@ input("Aperte Enter para continuar...")
 def count_gender(data_list):
     male = 0
     female = 0
+    for line in data_list:
+        if (line[-2]) == "Female":
+            female += 1
+        elif (line[-2]) == "Male":
+            male += 1
     return [male, female]
 
 
