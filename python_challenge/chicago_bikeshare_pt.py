@@ -43,7 +43,7 @@ input("Aperte Enter para continuar...")
 # TODO: Imprima o `gênero` das primeiras 20 linhas
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 for i in range(20):
-    print(data_list[i][6])
+    print("amostra ",i,":",data_list[i][6])
 
 # Ótimo! Nós podemos pegar as linhas(samples) iterando com um for, e as colunas(features) por índices.
 # Mas ainda é difícil pegar uma coluna em uma lista. Exemplo: Lista com todos os gêneros
@@ -51,7 +51,17 @@ for i in range(20):
 input("Aperte Enter para continuar...")
 # TAREFA 3
 # TODO: Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
-def column_to_list(data, index):
+def column_to_list(data:list,index: int) -> list:
+    """
+      Retorna a lista de dados de uma coluna cujo índice informado é index.
+      Argumentos:
+          data: lista representando o conjunto de dados.
+          index: índice da coluna no conjunto de dados.
+      Retorna:
+          A lista de dados correspondente a uma coluna.
+
+    """
+    
     column_list = []
     # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
     for line in data:
@@ -93,7 +103,16 @@ input("Aperte Enter para continuar...")
 # TAREFA 5
 # TODO: Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
-def count_gender(data_list):
+def count_gender(data_list:list) -> list:
+    """
+      Retorna a lista contendo o total de gêneros masculinos e femininos no dataset.
+      Argumentos:
+          data: lista representando o conjunto de dados.
+      Retorna:
+          A lista de dados correspondente a contagem de masculinos e femininos.
+
+    """
+
     male = 0
     female = 0
     for line in data_list:
@@ -119,7 +138,12 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Male", "Female", ou "Equal" como resposta.
 def most_popular_gender(data_list):
-    answer = ""
+    if count_gender(data_list)[0] > count_gender(data_list)[1]:
+        answer = "Male"
+    elif count_gender(data_list)[0] < count_gender(data_list)[1]:
+        answer = "Female"
+    elif count_gender(data_list)[0] == count_gender(data_list)[1]:
+        answer = "Equal"
     return answer
 
 
@@ -148,6 +172,40 @@ input("Aperte Enter para continuar...")
 # TODO: Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
 print("\nTAREFA 7: Verifique o gráfico!")
 
+def count_user_type(data_list: list) -> list:
+    """
+      Retorna a lista com a volumetria de dados para cada user type.
+      Argumentos:
+          data: lista representando o conjunto de dados.
+      Retorna:
+          Lista com a volumetria de cada user type do dataset.
+
+    """    
+    
+    customer = 0
+    subscriber = 0
+    dependent = 0
+    
+    for line in data_list:
+        if (line[-3]) == "Customer":
+            customer += 1
+        elif (line[-3]) == "Subscriber":
+            subscriber += 1
+        elif (line[-3]) == "Dependent":
+            dependent += 1
+    return [customer, subscriber, dependent]
+
+user_type_list = column_to_list(data_list, -3)
+types = ["Customer", "Subscriber", "Dependent"]
+quantity = count_user_type(data_list)
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantidade')
+plt.xlabel('User Type')
+plt.xticks(y_pos, types)
+plt.title('Quantidade por User Type')
+plt.show(block=True)
+
 
 input("Aperte Enter para continuar...")
 # TAREFA 8
@@ -155,7 +213,7 @@ input("Aperte Enter para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Escreva sua resposta aqui."
+answer = "A condição apresentada é falsa pois na coluna Gender existem 184891 registros vazios. Logo male + female representa apenas uma parte do dataset."
 print("resposta:", answer)
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
@@ -167,12 +225,23 @@ input("Aperte Enter para continuar...")
 # TAREFA 9
 # TODO: Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
 # Você não deve usar funções prontas para isso, como max() e min().
-trip_duration_list = column_to_list(data_list, 2)
-min_trip = 0.
-max_trip = 0.
-mean_trip = 0.
-median_trip = 0.
+sum_trip_duration = 0
+count_occurrences = 0
 
+trip_duration_list = column_to_list(data_list, 2)
+trip_duration_list = [int(i) for i in trip_duration_list]
+
+trip_duration_list.sort()
+min_trip = trip_duration_list[0]
+max_trip = trip_duration_list[-1]
+
+for value in trip_duration_list:
+    sum_trip_duration += value
+    count_occurrences += 1
+    
+mean_trip = round(sum_trip_duration/count_occurrences)
+index = round((count_occurrences + 1)/2)
+median_trip = trip_duration_list[index]
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
@@ -188,7 +257,8 @@ input("Aperte Enter para continuar...")
 # TAREFA 10
 # Gênero é fácil porque nós temos apenas algumas opções. E quanto a start_stations? Quantas opções ele tem?
 # TODO: Verifique quantos tipos de start_stations nós temos, usando set()
-start_stations = set()
+start_stations_list = column_to_list(data_list, 3)
+start_stations = set(start_stations_list)
 
 print("\nTAREFA 10: Imprimindo as start stations:")
 print(len(start_stations))
