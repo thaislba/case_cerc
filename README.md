@@ -11,7 +11,11 @@ O projeto está dividido em dois diretórios:
 #### Requisitos
 * [git](https://git-scm.com/) instalado
 * Python 3.x.x
-* 
+
 
 #### Execução local
 
+Para executar o código Python, navegue até o diretório correto e siga as instruções do README.
+````
+cd python_challenge
+````
