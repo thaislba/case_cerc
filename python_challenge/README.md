@@ -15,6 +15,12 @@ Esse dataset é um subconjunto do dataset Chicago bikeshare e possui os seguinte
 | Start Time         |                |
 | Birth Year;;;;;;;  |                |
 
+### Estrutura do repositório
+ - ````.venv````virtual environment com bibliotecas necessárias para a execução do código
+ - ````chicago.csv```` arquivo do dataset analisado
+ - ````chicago_bikeshare_pt.py```` código Python proposto
+ - ````case_cerc_formatted.ipynb````jupyter notebook contendo o código de chicago_bikeshare_pt apresentado de forma visual
+
 ### Execução
 O código pode ser executado de duas maneiras:
   1. execução de ````chicago_bikeshare_pt.py```` pela linha de comando
