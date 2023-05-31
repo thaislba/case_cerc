@@ -9,8 +9,9 @@ O projeto está dividido em dois diretórios:
 * ````/architecture_challenge````: contém proposta de desenho de arquitetura e sua respectiva documentação
 
 #### Requisitos
+* Linux SO
 * [git](https://git-scm.com/) instalado
-* Python 3.x.x
+* [Python](https://www.python.org/downloads/) 3.x.x
 
 
 #### Execução local
