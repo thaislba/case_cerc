@@ -20,3 +20,9 @@ Para executar o código Python, navegue até o diretório correto e siga as inst
 ````
 cd python_challenge
 ````
+
+#### Melhorias futuras
+
+* Refatorar código para reutilização de funções
+* Separar arquivo de testes
+* Conteinerizar a solução
