@@ -5,15 +5,14 @@ Esse dataset é um subconjunto do dataset Chicago bikeshare e possui os seguinte
 
 |        Campo       |   Descrição    |
 ---------------------|-----------------
-| Start Time         |                |
-| End Time           |                |
-| Trip Duration      |                |
-| Start Station      |                |
-| End Station        |                |
-| User Type          |                |
-| Gender             |                |
-| Start Time         |                |
-| Birth Year;;;;;;;  |                |
+| Start Time         | Data e hora do início da corrida      |
+| End Time           | Data e hora do fim da corrida         |
+| Trip Duration      | Duração da corrida                    |
+| Start Station      | Estação de início da corrida          |
+| End Station        | Estação de fim da corrida             |
+| User Type          | Tipo de ciclista                      |
+| Gender             | Genêro do ciclista membro             |
+| Birth Year;;;;;;;  | Ano de nascimento do ciclista membro  |
 
 ### Estrutura do repositório
  - ````.venv````virtual environment com bibliotecas necessárias para a execução do código
