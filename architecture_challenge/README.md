@@ -4,10 +4,16 @@ Este repositório contém a proposta de uma arquitetura para a criação de um D
 
 ### Estrutura do repositório
 - ````architecture.drawio````
+- ````architecture.drawio.png````
 
 ### Arquitetura
+![Label](/architecture_challenge/architecture.drawio.png)
+
 - aquisição dos dados
 - tratamento dos dados
 - armazenamento dos dados
 - disponibilização dos dados
 
+### Pontos fortes
+
+### Pontos fracos
