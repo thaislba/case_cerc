@@ -1,4 +1,4 @@
-# case_cerc
+# Chicago Bikeshare
 ## Objetivos do case
 O objetivo deste case é realizar a análise do conjunto de dados chicago.csv utilizando a linguagem Python e apresentar a proposta de uma arquitetura de dados para a criação de um data lake.
 
